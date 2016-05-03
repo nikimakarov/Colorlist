@@ -8,11 +8,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     // элементы списка которые будут в него внесены
-    String[] colors = new String[360];
-
+    ArrayList<String> colors = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,10 +24,10 @@ public class MainActivity extends AppCompatActivity {
 
         //заполняем элементы списка
         for (int i=0;i<360;i++)
-            colors[i] = "";
+            colors.add("");
 
         // создаем адаптер
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.item, colors);
+        MyAdapter adapter = new MyAdapter(this, colors);
 
         // устанавливаем адаптер списку
         list.setAdapter(adapter);
