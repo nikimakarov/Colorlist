@@ -1,27 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="ru.surf.nikita_makarov.MainActivity">
-
-    <ScrollView
-        android:id="@+id/scroll"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <ListView
+        android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-     <TextView
-         android:id="@+id/text"
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         android:textColor="#00ff51"
-         android:background="#FFFFFF"
-         android:textSize="24px"
-         android:shadowDx="0"
-         android:shadowDy="0"
-         android:shadowRadius="0"
-         android:shadowColor="#FFFFFF"
-         android:isScrollContainer="true"
-         />
-
-    </ScrollView>
-</RelativeLayout>
+        android:layout_height="wrap_content">
+    </ListView>
+</LinearLayout>

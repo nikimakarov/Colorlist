@@ -2,63 +2,43 @@ package ru.surf.nikita_makarov;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    // элементы списка которые будут в него внесены
+    String[] colors = new String[360];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView text = (TextView) findViewById(R.id.text);
-        text.setText("9:39:51 Gradle sync started\n" +
-                "9:40:55 Gradle sync completed\n" +
-                "9:40:57 Executing tasks: [:app:generateDebugSources, :app:generateDebugAndroidTestSources, :app:mockableAndroidJar, :app:prepareDebugUnitTestDependencies]\n" +
-                "9:41:47 Gradle build finished in 51s 457ms\n" +
-                "9:52:29 Unregistered VCS root detected\n" +
-                "        The directory C:\\Users\\user\\Desktop\\Surf\\Colorlist is under Git, but is not registered in the Settings.\n" +
-                "        Add root  Configure  Ignore\n" +
-                "9:58:22 34 files committed: Project files are copied into reprository, excluding .gitignore list.\n" +
-                "9:58:41 Push successful: Pushed 1 commit to origin/master" + "9:39:51 Gradle sync started\n" +
-                "9:40:55 Gradle sync completed\n" +
-                "9:40:57 Executing tasks: [:app:generateDebugSources, :app:generateDebugAndroidTestSources, :app:mockableAndroidJar, :app:prepareDebugUnitTestDependencies]\n" +
-                "9:41:47 Gradle build finished in 51s 457ms\n" +
-                "9:52:29 Unregistered VCS root detected\n" +
-                "        The directory C:\\Users\\user\\Desktop\\Surf\\Colorlist is under Git, but is not registered in the Settings.\n" +
-                "        Add root  Configure  Ignore\n" +
-                "9:58:22 34 files committed: Project files are copied into reprository, excluding .gitignore list.\n" +
-                "9:58:41 Push successful: Pushed 1 commit to origin/master" + "9:39:51 Gradle sync started\n" +
-                "9:40:55 Gradle sync completed\n" +
-                "9:40:57 Executing tasks: [:app:generateDebugSources, :app:generateDebugAndroidTestSources, :app:mockableAndroidJar, :app:prepareDebugUnitTestDependencies]\n" +
-                "9:41:47 Gradle build finished in 51s 457ms\n" +
-                "9:52:29 Unregistered VCS root detected\n" +
-                "        The directory C:\\Users\\user\\Desktop\\Surf\\Colorlist is under Git, but is not registered in the Settings.\n" +
-                "        Add root  Configure  Ignore\n" +
-                "9:58:22 34 files committed: Project files are copied into reprository, excluding .gitignore list.\n" +
-                "9:58:41 Push successful: Pushed 1 commit to origin/master" + "9:39:51 Gradle sync started\n" +
-                "9:40:55 Gradle sync completed\n" +
-                "9:40:57 Executing tasks: [:app:generateDebugSources, :app:generateDebugAndroidTestSources, :app:mockableAndroidJar, :app:prepareDebugUnitTestDependencies]\n" +
-                "9:41:47 Gradle build finished in 51s 457ms\n" +
-                "9:52:29 Unregistered VCS root detected\n" +
-                "        The directory C:\\Users\\user\\Desktop\\Surf\\Colorlist is under Git, but is not registered in the Settings.\n" +
-                "        Add root  Configure  Ignore\n" +
-                "9:58:22 34 files committed: Project files are copied into reprository, excluding .gitignore list.\n" +
-                "9:58:41 Push successful: Pushed 1 commit to origin/master" + "9:39:51 Gradle sync started\n" +
-                "9:40:55 Gradle sync completed\n" +
-                "9:40:57 Executing tasks: [:app:generateDebugSources, :app:generateDebugAndroidTestSources, :app:mockableAndroidJar, :app:prepareDebugUnitTestDependencies]\n" +
-                "9:41:47 Gradle build finished in 51s 457ms\n" +
-                "9:52:29 Unregistered VCS root detected\n" +
-                "        The directory C:\\Users\\user\\Desktop\\Surf\\Colorlist is under Git, but is not registered in the Settings.\n" +
-                "        Add root  Configure  Ignore\n" +
-                "9:58:22 34 files committed: Project files are copied into reprository, excluding .gitignore list.\n" +
-                "9:58:41 Push successful: Pushed 1 commit to origin/master" + "9:39:51 Gradle sync started\n" +
-                "9:40:55 Gradle sync completed\n" +
-                "9:40:57 Executing tasks: [:app:generateDebugSources, :app:generateDebugAndroidTestSources, :app:mockableAndroidJar, :app:prepareDebugUnitTestDependencies]\n" +
-                "9:41:47 Gradle build finished in 51s 457ms\n" +
-                "9:52:29 Unregistered VCS root detected\n" +
-                "        The directory C:\\Users\\user\\Desktop\\Surf\\Colorlist is under Git, but is not registered in the Settings.\n" +
-                "        Add root  Configure  Ignore\n" +
-                "9:58:22 34 files committed: Project files are copied into reprository, excluding .gitignore list.\n" +
-                "9:58:41 Push successful: Pushed 1 commit to origin/master");
+
+        // связываемся с ListView
+        ListView list = (ListView) findViewById(R.id.list);
+
+        //заполняем элементы списка
+        for (int i=0;i<360;i++)
+            colors[i] = "";
+
+        // создаем адаптер
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.item, colors);
+
+        // устанавливаем адаптер списку
+        list.setAdapter(adapter);
+
+        // пробный клик для каждого элемента списка
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                Toast.makeText(getApplicationContext(), "itemClick: position = " +
+                                position + ", id = " + id, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
