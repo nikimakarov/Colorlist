@@ -1,10 +1,13 @@
 package ru.surf.nikita_makarov;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -14,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     // элементы списка которые будут в него внесены
     ArrayList<String> colors = new ArrayList<String>();
+    static String N = "id";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,13 +36,14 @@ public class MainActivity extends AppCompatActivity {
         // устанавливаем адаптер списку
         list.setAdapter(adapter);
 
-        // пробный клик для каждого элемента списка
+        //клик для каждого элемента списка
         list.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                Toast.makeText(getApplicationContext(), "itemClick: position = " +
-                                position + ", id = " + id, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtra("position",position);
+                startActivity(intent);
             }
         });
     }
